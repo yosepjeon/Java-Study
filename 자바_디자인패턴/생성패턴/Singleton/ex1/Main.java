@@ -1,4 +1,4 @@
-package 자바_디자인패턴.생성패턴.Singleton;
+package 자바_디자인패턴.생성패턴.Singleton.ex1;
 
 public class Main {
 	public static void main(String[] args ) {
