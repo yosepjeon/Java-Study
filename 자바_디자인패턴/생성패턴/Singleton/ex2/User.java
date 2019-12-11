@@ -8,8 +8,8 @@ public class User {
 	}
 	
 	public void print() {
-		Printer printer = Printer.getPrinter();
-//		Printer printer = Printer.Instance;
+//		Printer printer = Printer.getPrinter();
+		Printer printer = Printer.Instance;
 
 		printer.print(this.name);
 	}
