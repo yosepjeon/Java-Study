@@ -24,7 +24,7 @@ public class Client {
 		  taekwonV.move();
 		  taekwonV.attack();
 
-		  System.out.println()
+		  System.out.println();
 		  System.out.println("My name is " + atom.getName());
 		  atom.move();
 		  atom.attack();
