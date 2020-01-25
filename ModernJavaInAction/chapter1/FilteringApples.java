@@ -47,6 +47,7 @@ public class FilteringApples {
 		System.out.println("heavyApplesByStreamPrallel = " + heavyApplesByStreamPrallel);
 	}
 	
+	// 레거시 자바 코드
 	public static List<Apple> filterGreenApples(List<Apple> inventory) {
 		List<Apple> result = new ArrayList<>();
 		
@@ -59,6 +60,7 @@ public class FilteringApples {
 		return result;
 	}
 	
+	// 레거시 자바 코드
 	public static List<Apple> filterHeavyApples(List<Apple> inventory) {
 		List<Apple> result = new ArrayList<>();
 		
