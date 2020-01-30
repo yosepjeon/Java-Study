@@ -6,32 +6,29 @@ import java.util.List;
 
 public class FilteringApples {
 	public static void main(String[] args) {
-		List<Apple> inventory = Arrays.asList(
-			new Apple(80,Color.GREEN),
-			new Apple(155, Color.GREEN),
-			new Apple(120, Color.RED)
-		);
-		
+		List<Apple> inventory = Arrays.asList(new Apple(80, Color.GREEN), new Apple(155, Color.GREEN),
+				new Apple(120, Color.RED));
+
 		// [Apple{color=GREEN, weight=80}, Apple{color=GREEN, weight=155}]
 		List<Apple> greenApples = filterApplesByColor(inventory, Color.GREEN);
 		System.out.println(greenApples);
-		
+
 		// [Apple{color=RED, weight=120}]
 		List<Apple> redApples = filterApplesByColor(inventory, Color.RED);
 		System.out.println(redApples);
-		
+
 		// [Apple{color=GREEN, weight=80}, Apple{color=GREEN, weight=155}]
 		List<Apple> greeApples2 = filterApples(inventory, new AppleGreenColorPredicate());
 		System.out.println(greeApples2);
-		
+
 		// [Apple{color=GREEN, weight=155}]
 		List<Apple> heavyApples = filterApples(inventory, new AppleWeightPredicate());
 		System.out.println(heavyApples);
-		
+
 		// []
 		List<Apple> redAndHeavyApples = filterApples(inventory, new AppleRedAndHeavyPredicate());
 		System.out.println(redAndHeavyApples);
-		
+
 		// [Apple{color=RED, weight=120}]
 		List<Apple> redApples2 = filterApples(inventory, new ApplePredicate() {
 
@@ -40,9 +37,17 @@ public class FilteringApples {
 				// TODO Auto-generated method stub
 				return a.getColor().equals(Color.RED);
 			}
-			
+
 		});
 		System.out.println(redApples2);
+
+		// [Apple{color=RED, weight=120}]
+		List<Apple> redApples3 = filterApples(inventory, (apple) -> apple.getColor().equals(Color.RED));
+		System.out.println(redApples3);
+
+		// [Apple{color=GREEN, weight=80}, Apple{color=GREEN, weight=155}]
+		List<Apple> greenApples3 = filterApples(inventory, (apple) -> apple.getColor().equals(Color.GREEN));
+		System.out.println(greenApples3);
 		
 		prettyPrintApple(inventory, new AppleStringNormalFormatter());
 		prettyPrintApple(inventory, new AppleStringColorFormatter());
@@ -109,9 +114,9 @@ public class FilteringApples {
 
 		return result;
 	}
-	
+
 	public static void prettyPrintApple(List<Apple> inventory, AppleFormatter p) {
-		for(Apple apple : inventory) {
+		for (Apple apple : inventory) {
 			String output = p.format(apple);
 			System.out.println(output);
 		}
@@ -181,22 +186,22 @@ public class FilteringApples {
 		}
 
 	}
-	
+
 	interface AppleFormatter {
 		String format(Apple apple);
 	}
-	
+
 	static class AppleStringNormalFormatter implements AppleFormatter {
 
 		@Override
 		public String format(Apple apple) {
 			// TODO Auto-generated method stub
-			
+
 			return "this Apple Weight is " + apple.getWeight() + "g";
 		}
-		
+
 	}
-	
+
 	static class AppleStringColorFormatter implements AppleFormatter {
 
 		@Override
@@ -204,18 +209,18 @@ public class FilteringApples {
 			// TODO Auto-generated method stub
 			return "this Apple Color is " + apple.getColor();
 		}
-		
+
 	}
-	
+
 	static class AppleStringWeightAndColorFormatter implements AppleFormatter {
 
 		@Override
 		public String format(Apple apple) {
 			// TODO Auto-generated method stub
 			String str = apple.getWeight() > 150 ? "heavy" : "light";
-			
+
 			return "this Apple is " + str + " And Color is" + apple.getColor();
 		}
-		
+
 	}
 }
