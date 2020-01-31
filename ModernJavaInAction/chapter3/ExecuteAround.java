@@ -8,6 +8,10 @@ public class ExecuteAround {
 	private static final String FILE = ExecuteAround.class.getResource("./data.txt").getFile();
 	
 	public static void main(String[] args ) throws IOException {
+		String result = processFileLimited();
+		System.out.println(result);
+		System.out.println("------ legacy -------");
+		
 		String oneLine = processFile((BufferedReader b) -> b.readLine());
 		System.out.println(oneLine);
 		
