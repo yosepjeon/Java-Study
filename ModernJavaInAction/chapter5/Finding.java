@@ -7,7 +7,16 @@ import ModernJavaInAction.chapter4.Dish;
 
 public class Finding {
 	public static void main(String[] args) {
+		if(isVegetarianFriendlyMenu()) {
+			System.out.println("Vegetarian friendly");
+		}
 		
+		System.out.println(isHealthyMenu());
+		System.out.println(isHealthyMenu2());
+		
+		Optional<Dish> dish = findVegetarianDish();
+//		System.out.println(dish.get());
+		dish.ifPresent(d -> System.out.println(d.getName()));
 	}
 	
 	private static boolean isVegetarianFriendlyMenu() {
@@ -24,5 +33,6 @@ public class Finding {
 	
 	private static Optional<Dish> findVegetarianDish() {
 		return menu.stream().filter(Dish::isVegetarian).findAny();
+//		return menu.stream().filter(d -> d.getCalories() < 1).findAny();
 	}
 }
