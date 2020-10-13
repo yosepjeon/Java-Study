@@ -52,5 +52,11 @@ public class NumericStream2 {
 						.filter(t -> t[2] % 1 == 0))
 				.map(array -> Arrays.stream(array).mapToInt(a -> (int)a).toArray());
 		pythagoreanTriples2.forEach(t -> System.out.println(t[0] + ", " + t[1] + ", " + t[2]));
+		
+		// 피보나치
+		Stream.iterate(new int[] {0,1}, t -> new int[] {t[1],t[0] + t[1]})
+		.limit(10)
+		.map(t -> t[0])
+		.forEach(e -> System.out.println(e));;
 	}
 }
